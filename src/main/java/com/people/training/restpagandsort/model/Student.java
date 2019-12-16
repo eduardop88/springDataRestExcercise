@@ -1,38 +1,31 @@
 package com.people.training.restpagandsort.model;
 
-import lombok.Getter;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.people.training.restpagandsort.validators.ValidRut;
+import lombok.Data;
 import lombok.NonNull;
-import lombok.Setter;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
+@Data
 @Table(name = "students")
 public class Student {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Getter
-    @Setter
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Getter
-    @Setter
     @NonNull
     @NotEmpty
     private String firstname;
-    @Getter
-    @Setter
     @NonNull
     @NotEmpty
     private String lastname;
-    @Getter
-    @Setter
-    @NonNull
-    @NotEmpty
     private int age;
+    @ValidRut
+    private String rut;
 
+    @JsonBackReference
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "courseid", nullable = false)
-    @Setter
     private Course course;
 }

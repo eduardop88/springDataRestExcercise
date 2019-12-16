@@ -1,6 +1,5 @@
 package com.people.training.restpagandsort.model;
 
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -16,7 +15,7 @@ import java.util.Set;
 @Table(name = "courses")
 public class Course {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotEmpty
     @NonNull
