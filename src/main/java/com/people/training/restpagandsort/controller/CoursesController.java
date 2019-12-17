@@ -12,6 +12,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
 @RestController
+@Validated
 @RequestMapping(path="/courses")
 public class CoursesController {
 
@@ -42,7 +43,6 @@ public class CoursesController {
     }
 
     @GetMapping(path="/{id}")
-    @Validated
     Course findById(@PathVariable @Min(1) Long id) {
         return courseService.findCourseById(id);
     }

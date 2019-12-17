@@ -1,28 +1,46 @@
 package com.people.training.restpagandsort.model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import java.util.HashSet;
 import java.util.Set;
 
-@Data
 @Entity
-@NoArgsConstructor
 @Table(name = "courses")
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotEmpty
-    @NonNull
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL,
+    @JsonManagedReference
+    @OneToMany(cascade = CascadeType.MERGE,
             fetch = FetchType.LAZY,
             mappedBy = "course")
-    Set<Student> students = new HashSet<>();
+    private Set<Student> students;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Set<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(Set<Student> students) {
+        this.students = students;
+    }
 }

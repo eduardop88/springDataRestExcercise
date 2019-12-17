@@ -17,7 +17,7 @@ public class RutValidator implements ConstraintValidator<ValidRut, String> {
         Matcher matcher = pattern.matcher(rut);
         if (!matcher.matches()) return false;
         String[] stringRut = rut.split("-");
-        return stringRut[1].toLowerCase().equals(verifierDigit(stringRut[0]));
+        return stringRut[1].equalsIgnoreCase(verifierDigit(stringRut[0]));
     }
 
     private static String verifierDigit( String rut ) {
