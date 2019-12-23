@@ -6,6 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @Validated
 @RequestMapping(path="/students")
@@ -19,7 +21,7 @@ public class StudentsController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Student newStudent(@RequestBody Student newStudent){
+    public Student newStudent(@Valid @RequestBody Student newStudent){
         return studentService.saveStudent(newStudent);
     }
 

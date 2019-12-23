@@ -2,6 +2,7 @@ package com.people.training.restpagandsort.controller;
 
 import com.people.training.restpagandsort.model.Course;
 import com.people.training.restpagandsort.services.CourseService;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+
 
 @RestController
 @Validated
