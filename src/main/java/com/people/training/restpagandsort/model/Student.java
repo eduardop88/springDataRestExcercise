@@ -12,6 +12,21 @@ import javax.validation.constraints.NotEmpty;
 @Getter
 @Setter
 @Table(name = "students")
+/*
+@NamedStoredProcedureQueries({
+        @NamedStoredProcedureQuery(name = "getStudentsOlderThan",
+                procedureName = "get_students_older_than",
+                parameters = {
+                        @StoredProcedureParameter(name = "age_p", type = Integer.class, mode = ParameterMode.IN),
+                },
+                resultClasses = Student.class)
+})*/
+@NamedNativeQueries({
+        @NamedNativeQuery(
+                name = "getStudentsOlderThan",
+                query = "SELECT get_students_names(?)"
+        )
+})
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

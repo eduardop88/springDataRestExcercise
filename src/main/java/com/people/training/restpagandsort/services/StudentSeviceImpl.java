@@ -4,6 +4,8 @@ import com.people.training.restpagandsort.model.Student;
 import com.people.training.restpagandsort.repositories.StudentRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class StudentSeviceImpl implements StudentService{
 
@@ -16,5 +18,10 @@ public class StudentSeviceImpl implements StudentService{
     @Override
     public Student saveStudent(Student student) {
         return studentRepository.save(student);
+    }
+
+    @Override
+    public String findStudentOlderThan(Integer age) {
+        return studentRepository.findStudentsOlderThan(age);
     }
 }
